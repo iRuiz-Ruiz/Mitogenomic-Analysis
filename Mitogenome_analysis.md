@@ -179,6 +179,12 @@ Depending of the analysis you will get
 - Subsets in Nexus, RAXMl and Bayes formats. 
 - Chartpartitions.
 
+## Close PF2 
+```ruby
+conda deactivate
+```
+Now you could return use any environment with python3 or superior. 
+
 # Phylogenetic analysis
 ## Maximum Likelihood - RAXMl
 There are two ways to run RAXMl analysis.
@@ -188,7 +194,7 @@ There are two ways to run RAXMl analysis.
 I'm going to comment about the second option. The Exelis Lab is the group that developed this software and also provide interesting examples. 
 Exelis Lab RAXMl: https://cme.h-its.org/exelixis/web/software/raxml/
 
-Download the infomation from the GitHub repository (https://github.com/stamatak/standard-RAxML). Go to Code > Download ZIP file and follow the instruction follow the instructions from the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) in the step. (Yes! you will need to run all from the Terminal).
+Download the infomation from the GitHub repository (https://github.com/stamatak/standard-RAxML). Go to Code > Download ZIP file and follow the instruction follow the instructions from the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) in the step. (Yes! you will need to run all from the Terminal). If you consider neccesary, you could create a RAXMl environemnt, not to disturb python2 of "py2" environment or any other. 
 
 **Possible errors (and solutions)**
 
