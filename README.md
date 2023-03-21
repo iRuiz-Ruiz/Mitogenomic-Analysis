@@ -3,14 +3,14 @@
 ## Mafft
 
 # Gblocks
-# Partition Finder 2
+# Partition Finder 2 (PF2)
 Manual: https://www.robertlanfear.com/partitionfinder/assets/Manual_v2.1.x.pdf
 
 Environment setting in Terminal (Ubuntu 20.04.5 LTS for WSL)
 
-#Create environment
+## Create environment for PF2 installation
 
-```
+```ruby
 conda create --name py2 python=2 
 #Activate (or enter) to the environment
 conda activate py2 
@@ -20,15 +20,15 @@ conda install numpy pandas pytables pyparsing scipy scikit-learn
 ```
 
 
-Partition Finder Installation
+## Installation of PF2
 
-```
+```ruby
 wget https://github.com/brettc/partitionfinder/archive/v2.1.1.tar.gz
 #Decompress file
 tar xfz v2.1.1.tar.gz
 ```
 
-Possible errors (and solutions)
+**Possible errors (and solutions)**
 
 No.  |                   Error                    |        Reason        |                                     Solution                        |
 :---:|                   :---:                    |         :---:        |                                       :---:                         |
@@ -41,7 +41,10 @@ python --version
 
 If appears 3.10.x or 3.x, that's probably the default python version in your system. Any environment you create will set up to the systems' python version, unless you specify that you want python2 or other version. To work with PartitionFinder should appear as 2.7.18 or 2.7.x version (see **Environment Setting**)
 
-Input files: (1) Phylip alignment file & (2) the *.cfg* file
+## Run Partition Finder
+Input files: 
+1. Phylip alignment file
+2. the *.cfg* file
 
 
 Output: Partitions for your alignment
