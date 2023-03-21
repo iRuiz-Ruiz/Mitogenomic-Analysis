@@ -84,11 +84,13 @@ Input files:
 2. the *.cfg* file (to write one see .cfg file example)
 3. PartitionFinder.py (included in the zippe file - see [Installation of PF2](https://github.com/iRuiz-Ruiz/Notebook/edit/main/README.md#installation-of-pf2))
 
-To run PF2, the .phy and .cfg files need to be in the same folder (wherever you like, as long you know the path). **Don't move the PartitionFinder.py from its folder.**
+To run PF2, the .phy and .cfg files need to be in the same folder (wherever you like, as long you know the path). **Don't move the file _PartitionFinder.py_ from its folder.**
 
 ```ruby
 python /usr/yourpath/partitionfinder-2.1.1/PartitionFinder.py /usr/yourpath/output.phy
 ```
+
+The parameters of the analysis need to be defined in the .cfg file (what includes? see this [section](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file)) that the program would call during the analysis. 
 
 Now, the interesting part comes... how to interpret the data according to the models (yes, there are more than one parameter you should set for your analysis)? Take a look to [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial.
 
@@ -171,6 +173,15 @@ In the example .cfg there i don't have the exact codon positions, as I pass it t
 Do you know any other reason why? Please leave it in the comments. 
 
 Output: Partitions for your alignment
+Depending of the analysis you will get 
+- The best substitution model
+- Subsets in Nexus, RAXMl and Bayes formats. 
+- Chartpartitions.
+
+# Phylogenetic analysis
+## Maximum Likelihood - RAXMl
+
+## Bayesian Analysis - BEAST
 
 # Sources 
 For Conda environments:
