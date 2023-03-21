@@ -265,8 +265,7 @@ Solution #4: BINGAMMA is designed for protein alignments, for DNA use GTRCATX. A
 Is a suffix not to overwrite the RAXMl results if run different experiments. 
 
 ##### How to include the partitions?
-1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. 
-2. Go to "Step 6: Partitioned Analysis" and continue with the analysis. 
+1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. according to "Step 6: Partitioned Analysis" and continue with the analysis. 
 
 ## Bayesian Analysis - BEAST
 
