@@ -3,6 +3,32 @@
 ## Mafft
 
 # Gblocks
+## Installation
+## Run Gblocks
+## Output file
+##### Concatenate .fasta files
+```ruby
+seqkit concat *.fasta > output.fasta
+#------------ format into a single line fasta 
+#delete enter in all doc
+tr -d "\n" < output.fasta > output.fasta
+#changes ">"
+sed -i -E "s/>/\n>/g" output.fasta > output.fasta
+#delete first empty row
+awk 'NR>1' output.fasta > output.fasta
+#add enter to name
+sed -e "s/>.\{8\}/&\n/g" < output.fasta > output.fasta
+```
+
+Partition Finder 2 needs the alignment in phylip format (.phy). 
+##### Convert .fasta to .phy for Partition Finder 2
+The only program that give the right format is Geneious Prime (the free version). 
+0. Install Geneious Prime (Free version)
+1. File > Import File(s)
+2. Click on "Keep Alignment"
+3. Select you alignment
+4. File > Export > Documents and select "Phylip alignment (.phy)" in the "Files of Type" box
+
 # Partition Finder 2 (PF2)
 Manual: https://www.robertlanfear.com/partitionfinder/assets/Manual_v2.1.x.pdf
 
@@ -43,9 +69,8 @@ If appears 3.10.x or 3.x, that's probably the default python version in your sys
 
 ## Run Partition Finder
 Input files: 
-1. Phylip alignment file
+1. Phylip alignment file (see Gblocks - Output)
 2. the *.cfg* file
-
 
 Output: Partitions for your alignment
 # Sources 
