@@ -180,6 +180,70 @@ Depending of the analysis you will get
 
 # Phylogenetic analysis
 ## Maximum Likelihood - RAXMl
+There are two ways to run RAXMl analysis.
+1. CIPRES website (you would need to create an account)
+2. In the Ubuntu Terminal
+
+I'm going to comment about the second option. The Exelis Lab is the group that developed this software and also provide interesting examples. 
+Exelis Lab RAXMl: https://cme.h-its.org/exelixis/web/software/raxml/
+
+Download the infomation from the GitHub repository (https://github.com/stamatak/standard-RAxML). Go to Code > Download ZIP file and follow the instruction follow the instructions from the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) in the step. (Yes! you will need to run all from the Terminal).
+
+**Possible errors (and solutions)**
+Problem #1
+```ruby
+Command 'make' not found, but can be installed with:
+
+sudo apt install make        # version 4.2.1-1.2, or
+sudo apt install make-guile  # version 4.2.1-1.2
+```
+Solution #1
+```ruby
+sudo apt install make
+```
+Problem #1.a: 'make' installation didn't work out
+```ruby
+rm -f *.o raxmlHPC
+gcc  -D_GNU_SOURCE -fomit-frame-pointer -funroll-loops -O2 -msse    -c -o axml.o axml.c
+make: gcc: Command not found
+make: *** [<builtin>: axml.o] Error 127
+```
+Solution #1.a: Sometimes gcc is not found, but could not be installed directly until some dependencies are updated. That's the reason to execute the first two lines. Then runs smoothly. Sometimes is neccesary to run a couple of times to update them, mirrors where they download sometimes had a problem. 
+```ruby
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install gcc
+```
+Now should run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS.
+
+Problem #2: When copying the raxmlHPC* files appears
+```ruby
+cp: target '/yourfolder/' is not a directory
+```
+Solution #2: The directory need to include "~/" before and close with "/"
+```ruby
+cp raxmlHPC* ~/argo/
+```
+
+Problem #3: 
+```ruby
+Command 'raxmlHPC' not found, but can be installed with: sudo apt install raxml
+```
+
+Solution #3: Add "./"
+```ruby
+./raxmlHPC -m BINGAMMA -p 12345 -s output.phy -n T1
+```
+
+Problem #4: When use _./raxmlHPC -m BINGAMMA -p 12345 -s output.phy -n T1_
+```ruby
+ERROR: Bad base (A) at site 1 of sequence 1
+Printing error context:
+
+30 7955
+nc_015248 AGAATATATAAAAAATTATAT
+```
+Solution #4: BINGAMMA is designed for protein alignments, for DNA use GTRCATX. Also commented in the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html), in the "Step 3: Getting started"
 
 ## Bayesian Analysis - BEAST
 
@@ -196,3 +260,7 @@ Text files / fasta files editing in Terminal:
 - BioStars - How to concatenate multiple fasta files https://www.biostars.org/p/332853/
 - Baeldung. Remove the First Line of a Text File in Linux - https://www.baeldung.com/linux/remove-line-endings-from-file
 - phoenixNAP. How to Use Sed to Find and Replace a String in a File - https://phoenixnap.com/kb/sed-replace
+
+For RAXMl:
+- Pissis (2012) - Running RAxML: https://groups.google.com/g/raxml/c/sxHJrhC-yvA
+- Kozlov answer (2018) - raxmlHPC ERROR: Bad base (A) at site 1 of sequence 1 https://groups.google.com/g/raxml/c/YW6Vt9F6mbU
