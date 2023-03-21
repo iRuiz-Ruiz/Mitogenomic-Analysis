@@ -211,13 +211,26 @@ gcc  -D_GNU_SOURCE -fomit-frame-pointer -funroll-loops -O2 -msse    -c -o axml.o
 make: gcc: Command not found
 make: *** [<builtin>: axml.o] Error 127
 ```
-Solution #1.a: Sometimes gcc is not found, but could not be installed directly until some dependencies are updated. That's the reason to execute the first two lines. Then runs smoothly. Sometimes is neccesary to run a couple of times to update them, mirrors where they download sometimes had a problem. 
+Solution #1.a: Install gcc dependency
+```ruby
+sudo apt-get install gcc
+```
+_Problem #1.c_
+... but Sometimes "gcc" is not found by python, but could not be installed directly until some dependencies are updated. That's the reason for executing the first two lines. Then runs smoothly. Sometimes is neccesary to run a couple of times to update them, mirrors where they download sometimes had a problem. 
+```ruby 
+Ign:1 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-139.156
+Err:1 http://security.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-139.156
+  404  Not Found [IP: 91.189.91.39 80]
+E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/l/linux/linux-libc-dev_5.4.0-139.156_amd64.deb  404  Not Found [IP: 91.189.91.39 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+```
+Solution #1.c:
 ```ruby
 sudo apt-get update
 sudo apt-get install build-essential
-sudo apt-get install gcc
 ```
-Now should run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS.
+
+Now should run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS you could try.
 
 _Problem #2: When copying the raxmlHPC* files appears_
 ```ruby
@@ -272,5 +285,7 @@ Text files / fasta files editing in Terminal:
 - phoenixNAP. How to Use Sed to Find and Replace a String in a File - https://phoenixnap.com/kb/sed-replace
 
 For RAXMl:
+- 
+- Ask Ubuntu - gcc command not found https://askubuntu.com/questions/1095168/command-not-found-cc-make-error-127
 - Pissis (2012) - Running RAxML: https://groups.google.com/g/raxml/c/sxHJrhC-yvA
 - Kozlov answer (2018) - raxmlHPC ERROR: Bad base (A) at site 1 of sequence 1 https://groups.google.com/g/raxml/c/YW6Vt9F6mbU
