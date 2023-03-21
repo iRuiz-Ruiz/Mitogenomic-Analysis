@@ -81,17 +81,17 @@ If appears 3.10.x or 3.x, that's probably the default python version in your sys
 ## Run Partition Finder 2
 Input files: 
 1. Phylip alignment file (see Gblocks - Output)
-2. the *.cfg* file (to create one see [Rob Lanfear Tutorial](http://www.robertlanfear.com/partitionfinder/tutorial/))
+2. the *.cfg* file (to write one see .cfg file example)
 3. PartitionFinder.py (included in the zippe file - see [Installation of PF2](https://github.com/iRuiz-Ruiz/Notebook/edit/main/README.md#installation-of-pf2))
 
-To run PF2, the input files need to be in the same folder
+To run PF2, the .phy and .cfg files need to be in the same folder (wherever you like, as long you know the path). **Don't move the PartitionFinder.py from its folder.**
 
 ```ruby
-python PartitionFinder.py output.phy
+python /usr/yourpath/partitionfinder-2.1.1/PartitionFinder.py /usr/yourpath/output.phy
 ```
 
 **Possible errors (and solutions)**
-#1 Runs... but then fails
+*#Problem 1: Does not find the .cfg file*
 
 ```ruby
 INFO     | 2023-03-20 19:41:53,459 | Note: NumExpr detected 20 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
@@ -106,6 +106,20 @@ INFO     | 2023-03-20 19:41:53,553 | Program path is here /home/w/partitionfinde
 ERROR    | 2023-03-20 19:41:53,553 | No such folder: ''
 ERROR    | 2023-03-20 19:41:53,553 | Failed to run. See previous errors.
 ```
+#Solution 1: create the .cfg file (see [.cfg file]() section) and save it in a separate folder with the .phy file.
+
+*#Problem 2: Does not find the .phy file*
+```ruby
+INFO     | 2023-03-21 09:06:04,778 | ------------------------ BEGINNING NEW RUN -------------------------------
+INFO     | 2023-03-21 09:06:04,778 | Looking for alignment file './infile.phy'...
+ERROR    | 2023-03-21 09:06:04,778 | Failed to find file: './infile.phy'. Please check and try again.
+ERROR    | 2023-03-21 09:06:04,778 | Failed to run. See previous errors.
+(py2) w@PC-i9:~/partitionfinder-2.1.1$ python PartitionFinder.py argo/output.phy
+```
+#Solution 2: correct the .phy filename in your .cfg file, as you see I forgot to change infile.phy for output.phy
+
+##### How to write a .cfg file?
+The author has a comprehensive [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial how to write one and the meaning of each parameter. Just a quick revision go to this blog. also the PF2 unzipped folder contains various examples. 
 
 Output: Partitions for your alignment
 
