@@ -90,6 +90,9 @@ To run PF2, the .phy and .cfg files need to be in the same folder (wherever you 
 python /usr/yourpath/partitionfinder-2.1.1/PartitionFinder.py /usr/yourpath/output.phy
 ```
 
+Now, the interesting part comes... how to interpret the data according to the models (yes, there are more than one parameter you should set for your analysis)? Take a look to [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial.
+
+
 **Possible errors (and solutions)**
 *#Problem 1: Does not find the .cfg file*
 
@@ -114,12 +117,57 @@ INFO     | 2023-03-21 09:06:04,778 | ------------------------ BEGINNING NEW RUN 
 INFO     | 2023-03-21 09:06:04,778 | Looking for alignment file './infile.phy'...
 ERROR    | 2023-03-21 09:06:04,778 | Failed to find file: './infile.phy'. Please check and try again.
 ERROR    | 2023-03-21 09:06:04,778 | Failed to run. See previous errors.
-(py2) w@PC-i9:~/partitionfinder-2.1.1$ python PartitionFinder.py argo/output.phy
 ```
 #Solution 2: correct the .phy filename in your .cfg file, as you see I forgot to change infile.phy for output.phy
 
 ##### How to write a .cfg file?
-The author has a comprehensive [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial how to write one and the meaning of each parameter. Just a quick revision go to this blog. also the PF2 unzipped folder contains various examples. 
+The author has a comprehensive [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial how to write one and the meaning of each parameter. Just a quick revision in here. 
+
+A .cfg looks like this
+```ruby
+## ALIGNMENT FILE ##
+alignment = youralignment.phy;
+
+## BRANCHLENGTHS: linked | unlinked ##
+branchlengths = linked;
+
+## MODELS OF EVOLUTION: all | allx | mrbayes | beast | gamma | gammai | <list> ##
+models = all;
+
+# MODEL SELECCTION: AIC | AICc | BIC #
+model_selection = aicc;
+
+## DATA BLOCKS: see manual for how to define ##
+[data_blocks]
+gene1=1-444;
+gen2=445-980;
+geb3=981-1540;
+
+## SCHEMES, search: all | user | greedy | rcluster | rclusterf | kmeans ##
+[schemes]
+search = greedy;
+```
+
+The data block section may seem a problem if you work with more than 10 genes, as you will have to take a look to the size of each alignment  from gblocks. Also, make sure items appear in the same order as the sequences were concatenated (see [Concatenate .fasta files](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#concatenate-fasta-files))
+
+An alternative is to use the .htm reports from gblock. 
+```ruby
+grep -oE '(New number of positions: <b>)[^ ]*' *.htm > alg-size.csv
+sed -i "s/.aligned.cut.fasta-gb.htm:New number of positions: <b>/,/g" alg-size.csv
+tr -d "</b>" < alg-size.csv > alg-size-final.csv
+```
+
+Then you could open it with excel, and give the desired format with "sum" and "concatenate" functions. 
+_(Version to run in the terminal - coming soon!!!)_
+
+If you explore the examples, you may see that the DATA BLOCK section could be written as well like this, 
+```ruby
+Gene1_pos1 = 1-789\3;
+Gene1_pos2 = 2-789\3;
+Gene1_pos3 = 3-789\3;
+```
+In the example .cfg there i don't have the exact codon positions, as I pass it through GBLOCKs and selected the most conserved regions. 
+Do you know any other reason why? Please leave it in the comments. 
 
 Output: Partitions for your alignment
 
