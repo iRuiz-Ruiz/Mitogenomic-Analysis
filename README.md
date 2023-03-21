@@ -6,8 +6,13 @@
 ## Installation
 ## Run Gblocks
 ## Output file
-##### Concatenate .fasta files
+### Concatenate .fasta files
+Running in Terminal (Ubuntu 20.04.5 LTS for WSL)
+
 ```ruby
+#Install seqkit (if you don't have it)
+conda install -c bioconda seqkit
+#concatenate in one file
 seqkit concat *.fasta > output.fasta
 #------------ format into a single line fasta 
 #delete enter in all doc
@@ -19,9 +24,13 @@ awk 'NR>1' output.fasta > output.fasta
 #add enter to name
 sed -e "s/>.\{8\}/&\n/g" < output.fasta > output.fasta
 ```
+**Other options**
+- Geneious Prime (only works with a subscription 😞) https://assets.geneious.com/manual/2022.1/static/GeneiousManualsu61.html#:~:text=To%20join%20several%20sequences%20end,document%20from%20the%20input%20sequences.
+- SEDA v1.5 (could not install due to a malware problem 😵) https://www.sing-group.org/seda/manual/operations.html#concatenate-sequences
 
-Partition Finder 2 needs the alignment in phylip format (.phy). 
-##### Convert .fasta to .phy for Partition Finder 2
+### Convert .fasta to .phy for Partition Finder 2
+The alignment need to be in phylip format (.phy) to run Partition Finder 2. 
+
 The only program that give the right format is Geneious Prime (the free version). 
 0. Install Geneious Prime (Free version)
 1. File > Import File(s)
@@ -31,6 +40,7 @@ The only program that give the right format is Geneious Prime (the free version)
 
 # Partition Finder 2 (PF2)
 Manual: https://www.robertlanfear.com/partitionfinder/assets/Manual_v2.1.x.pdf
+Tutorial: http://www.robertlanfear.com/partitionfinder/tutorial/
 
 Environment setting in Terminal (Ubuntu 20.04.5 LTS for WSL)
 
@@ -70,14 +80,18 @@ If appears 3.10.x or 3.x, that's probably the default python version in your sys
 ## Run Partition Finder
 Input files: 
 1. Phylip alignment file (see Gblocks - Output)
-2. the *.cfg* file
+2. the *.cfg* file (see Tutorial)
 
 Output: Partitions for your alignment
 # Sources 
 For installation: 
 Rob Lanfear answer (2017) https://groups.google.com/g/partitionfinder/c/zQDYzrFf0Bw
 
+PF2 Tutorial http://www.robertlanfear.com/partitionfinder/tutorial/
+
 Apolo Docs - Partition Finder* https://apolo-docs.readthedocs.io/en/latest/software/applications/partitionFinder/2.1.1/
+
+BioStars - How to concatenate multiple fasta files https://www.biostars.org/p/332853/
 
 '* Be careful with Apolo Docs, doesn't establish python2 in the environment creation
 
