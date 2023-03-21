@@ -96,6 +96,7 @@ Now, the interesting part comes... how to interpret the data according to the mo
 
 
 **Possible errors (and solutions)**
+
 *#Problem 1: Does not find the .cfg file*
 
 ```ruby
@@ -190,7 +191,8 @@ Exelis Lab RAXMl: https://cme.h-its.org/exelixis/web/software/raxml/
 Download the infomation from the GitHub repository (https://github.com/stamatak/standard-RAxML). Go to Code > Download ZIP file and follow the instruction follow the instructions from the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) in the step. (Yes! you will need to run all from the Terminal).
 
 **Possible errors (and solutions)**
-Problem #1
+
+_Problem #1_
 ```ruby
 Command 'make' not found, but can be installed with:
 
@@ -201,7 +203,8 @@ Solution #1
 ```ruby
 sudo apt install make
 ```
-Problem #1.a: 'make' installation didn't work out
+
+_Problem #1.a: 'make' installation didn't work out_
 ```ruby
 rm -f *.o raxmlHPC
 gcc  -D_GNU_SOURCE -fomit-frame-pointer -funroll-loops -O2 -msse    -c -o axml.o axml.c
@@ -216,7 +219,7 @@ sudo apt-get install gcc
 ```
 Now should run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS.
 
-Problem #2: When copying the raxmlHPC* files appears
+_Problem #2: When copying the raxmlHPC* files appears_
 ```ruby
 cp: target '/yourfolder/' is not a directory
 ```
@@ -225,12 +228,12 @@ Solution #2: The directory need to include "~/" before and close with "/"
 cp raxmlHPC* ~/argo/
 ```
 
-Problem #3: 
+_Problem #3: 
 ```ruby
 Command 'raxmlHPC' not found, but can be installed with: sudo apt install raxml
 ```
 
-Solution #3: Add "./"
+Solution #3: Add "./" before running (not included in the RAXMl tutorial)
 ```ruby
 ./raxmlHPC -m BINGAMMA -p 12345 -s output.phy -n T1
 ```
@@ -243,7 +246,14 @@ Printing error context:
 30 7955
 nc_015248 AGAATATATAAAAAATTATAT
 ```
-Solution #4: BINGAMMA is designed for protein alignments, for DNA use GTRCATX. Also commented in the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html), in the "Step 3: Getting started"
+Solution #4: BINGAMMA is designed for protein alignments, for DNA use GTRCATX. Also commented in the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html), in the "Step 3: Getting started".
+
+##### What is T1, T2, T3 ... Tn?
+Is a suffix not to overwrite the RAXMl results if run different experiments. 
+
+##### How to include the partitions?
+1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. 
+2. Go to "Step 6: Partitioned Analysis" and continue with the analysis. 
 
 ## Bayesian Analysis - BEAST
 
