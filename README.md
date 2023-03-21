@@ -7,18 +7,28 @@
 Manual: https://www.robertlanfear.com/partitionfinder/assets/Manual_v2.1.x.pdf
 
 Environment setting in Terminal (Ubuntu 20.04.5 LTS for WSL)
+
 #Create environment
+
 conda create --name py2 python=2 
+
 #Activate (or enter) to the environment
+
 conda activate py2 
+
 #you will notice that 'base' changed to 'py2'
+
 #install dependencies
+
 conda install numpy pandas pytables pyparsing scipy scikit-learn
 
 
 Partition Finder Installation
+
 wget https://github.com/brettc/partitionfinder/archive/v2.1.1.tar.gz
+
 #Decompress file
+
 tar xfz v2.1.1.tar.gz
 
 
