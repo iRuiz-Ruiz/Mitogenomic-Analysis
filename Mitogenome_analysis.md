@@ -26,18 +26,24 @@ tar xvf Gblocks_OS_0.91b.tar
 
 ## Run Gblocks
 ```ruby
+#Create a folder to include the aligned files and Gblock executable program 
+mkdir gblock-tests
+#Enter Gblocks folder
+cd Gblocks_0.91b
+cp Gblocks /yourdesirepath/trial/
+
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
 For more than one file, you could this simple loop (see [gblocks.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/gblock.sh))
 ```ruby
-#sometimes there is a problem with .sh formats, you could use 'dos2unix' function... install with sudo apt-get install dos2unix
+#sometimes there is a problem with .sh format, you could use 'dos2unix' function to solve it... install with sudo apt-get install dos2unix
 dos2unix gblocks.sh
 #run the file
 sh gblocks.sh
 ```
 
-The output will be two extra file per .fasta, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
+The GBLOCKs output will be two extra files per .fasta files, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
 ```ruby
 mkdir fasta-gb hmtl
 mv *fasta-gb fasta-gb/
