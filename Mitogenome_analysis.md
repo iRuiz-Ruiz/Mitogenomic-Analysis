@@ -45,6 +45,21 @@ mv *htm htm/
 ```
 The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the fasta-gb need to be converted to .fasta file to concatenate in the next step. 
 
+```ruby
+#------------ format into a single line fasta 
+#delete enter in all the file
+tr -d "\r\n" < yourfile.fasta-gb > gene.fasta
+tr -d " " < yourfile.fasta-gb > gene.fasta
+#includes an "enter" per specie
+sed -i -E "s/>/\n>/g" gene.fasta
+#delete first empty row
+awk 'NR>1' gene.fasta
+#add enter to ID
+sed -e "s/>.\{8\}/&\n/g" < gene.fasta
+```
+
+Comment: 
+
 ## Format output file for PF2
 ### Concatenate .fasta files
 Input:
@@ -59,13 +74,13 @@ conda install -c bioconda seqkit
 seqkit concat *.fasta > output.fasta
 #------------ format into a single line fasta 
 #delete enter in all the file
-tr -d "\n" < output.fasta > output.fasta
+tr -d "\n" < youralignment.fasta > edited.fasta
 #includes an "enter" per specie
-sed -i -E "s/>/\n>/g" output.fasta > output.fasta
+sed -i -E "s/>/\n>/g" edited.fasta #> edited.fasta
 #delete first empty row
-awk 'NR>1' output.fasta > output.fasta
+awk 'NR>1' edited.fasta #> edited.fasta
 #add enter to ID
-sed -e "s/>.\{8\}/&\n/g" < output.fasta > output.fasta
+sed -e "s/>.\{8\}/&\n/g" < edited.fasta #> edited.fasta
 ```
 **Other options**
 - Geneious Prime (only works with a subscription 😞) https://assets.geneious.com/manual/2022.1/static/GeneiousManualsu61.html#:~:text=To%20join%20several%20sequences%20end,document%20from%20the%20input%20sequences.
