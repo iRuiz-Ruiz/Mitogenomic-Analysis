@@ -43,9 +43,8 @@ mkdir fasta-gb hmt
 mv *fasta-gb fasta-gb/
 mv *htm htm/
 ```
-The .htm file gives you information about the alignment size, the blocks and other details. The former will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section).
+The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the fasta-gb need to be converted to .fasta file to concatenate in the next step. 
 
-The fasta-gb need to be converted to .fasta file to concatenate in the next step. 
 ## Format output file for PF2
 ### Concatenate .fasta files
 Input:
@@ -314,9 +313,18 @@ Is a suffix not to overwrite the RAXMl results if run different experiments.
 ##### How to include the partitions?
 1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. according to "Step 6: Partitioned Analysis" and continue with the analysis. 
 
+### Visualize phylogeny
+Change names for fig-tree visualization
+
 ## Bayesian Analysis - BEAST
 
 # Sources 
+For dos2unix:
+- How to install https://howtoinstall.co/en/dos2unix
+
+Basic bash use:
+- Remove files https://www.hostinger.com/tutorials/how-to-remove-files-and-folders-using-linux-command-line/
+
 For Conda environments:
 - Conda - Managing environments https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 For PF2 installation: 
