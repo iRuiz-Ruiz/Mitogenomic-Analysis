@@ -270,26 +270,26 @@ Download the infomation from the GitHub repository (https://github.com/stamatak/
 
 **Possible errors (and solutions)**
 
-_Problem #1_
+_Problem #1.a_
 ```ruby
 Command 'make' not found, but can be installed with:
 
 sudo apt install make        # version 4.2.1-1.2, or
 sudo apt install make-guile  # version 4.2.1-1.2
 ```
-Solution #1
+Solution #1.a
 ```ruby
 sudo apt install make
 ```
 
-_Problem #1.a: 'make' installation didn't work out_
+_Problem #1.b: 'make' installation didn't work out_
 ```ruby
 rm -f *.o raxmlHPC
 gcc  -D_GNU_SOURCE -fomit-frame-pointer -funroll-loops -O2 -msse    -c -o axml.o axml.c
 make: gcc: Command not found
 make: *** [<builtin>: axml.o] Error 127
 ```
-Solution #1.a: Install gcc dependency
+Solution #1.b: Install gcc dependency
 ```ruby
 sudo apt-get install gcc
 ```
@@ -308,7 +308,7 @@ sudo apt-get update
 sudo apt-get install build-essential
 ```
 
-Now should run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS you could try.
+Now, you could solve problem 1.b and 1.a to run the command _make -f Makefile.gcc_. There are different version for Makefile command like SSE3 or SSE3.PTHREADS you could try.
 
 _Problem #2: When copying the raxmlHPC* files appears_
 ```ruby
