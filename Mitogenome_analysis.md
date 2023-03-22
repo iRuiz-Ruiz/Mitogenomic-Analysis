@@ -25,6 +25,11 @@ tar xvf Gblocks_OS_0.91b.tar
 ```
 
 ## Run Gblocks
+Input files needed are
+1. Gblock executable program
+2. Aligned fasta files
+Both need to be in the same folder, to do that you could use the followin lines
+
 ```ruby
 #Create a folder to include the aligned files and Gblock executable program 
 mkdir gblock-tests
@@ -34,6 +39,9 @@ cd Gblocks_0.91b
 cp Gblocks /yourdesirepath/gblock-tests/
 #Go to the gblock-tests folder
 cd /yourpath/gblock-tests
+```
+**RUN GBLOCKS**
+```ruby
 #Don't forget to copy the .fasta files to your folder before executing
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
