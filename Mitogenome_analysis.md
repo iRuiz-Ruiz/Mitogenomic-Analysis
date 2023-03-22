@@ -39,23 +39,36 @@ sh gblocks.sh
 ```
 You will get two extra file per .fasta, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
 ```ruby
-mkdir fasta-gb hmt
+mkdir fasta-gb hmtl
 mv *fasta-gb fasta-gb/
-mv *htm htm/
+mv *htm html/
 ```
-The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the fasta-gb need to be converted to .fasta file to concatenate in the next step. 
+The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the .fasta-gb files need to be converted to .fasta file to concatenate in the next step. You could use this shape file (make sure to have it in the same folder as the .fasta-gb files). 
+```ruby
+dos2unix fastagb2fasta.sh
+sh fasta.sh 
+```
+The loop is described in the next lines
 
 ```ruby
-#------------ format into a single line fasta 
+#------------ from fasta-gb to fasta 
 #delete enter in all the file
-tr -d "\r\n" < yourfile.fasta-gb > gene.fasta
-tr -d " " < yourfile.fasta-gb > gene.fasta
+cd fasta-gb #go to the folder with the fasta-gb files
+#loop starts
+for i in *.fasta-gb
+do
+#delete enter in all the file
+tr -d "\r\n" < $i > dummy
+tr -d " " < dummy > dummy2
 #includes an "enter" per specie
-sed -i -E "s/>/\n>/g" gene.fasta
+sed -i -E "s/>/\n>/g" dummy2
 #delete first empty row
-awk 'NR>1' gene.fasta
-#add enter to ID
-sed -e "s/>.\{8\}/&\n/g" < gene.fasta
+awk 'NR>1' dummy2 > dummy
+#add enter to ID, only accept eight characters 
+sed -e "s/>.\{8\}/&\n/g" < dummy > ${i-gb}.fasta
+rm dummy dummy2
+done
+#loop ends
 ```
 
 Comment: 
@@ -73,14 +86,18 @@ conda install -c bioconda seqkit
 #concatenate in one file
 seqkit concat *.fasta > output.fasta
 #------------ format into a single line fasta 
+for i in *.fasta;
+do;
 #delete enter in all the file
-tr -d "\n" < youralignment.fasta > edited.fasta
+tr -d "\n" < $i > dummy
 #includes an "enter" per specie
-sed -i -E "s/>/\n>/g" edited.fasta #> edited.fasta
+sed -i -E "s/>/\n>/g" dummy
 #delete first empty row
-awk 'NR>1' edited.fasta #> edited.fasta
-#add enter to ID
-sed -e "s/>.\{8\}/&\n/g" < edited.fasta #> edited.fasta
+awk 'NR>1' dummy > dummy2
+#add enter to ID, only accept eight characters 
+sed -e "s/>.\{8\}/&\n/g" < dummy2 > ${i%-gb}.fasta
+rm dummy dummy2
+done;
 ```
 **Other options**
 - Geneious Prime (only works with a subscription 😞) https://assets.geneious.com/manual/2022.1/static/GeneiousManualsu61.html#:~:text=To%20join%20several%20sequences%20end,document%20from%20the%20input%20sequences.
