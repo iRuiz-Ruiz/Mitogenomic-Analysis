@@ -30,8 +30,11 @@ tar xvf Gblocks_OS_0.91b.tar
 mkdir gblock-tests
 #Enter Gblocks folder
 cd Gblocks_0.91b
-cp Gblocks /yourdesirepath/trial/
-
+#Copy executable file to the folder
+cp Gblocks /yourdesirepath/gblock-tests/
+#Go to the gblock-tests folder
+cd /yourpath/gblock-tests
+#Don't forget to copy the .fasta files to your folder before executing
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
