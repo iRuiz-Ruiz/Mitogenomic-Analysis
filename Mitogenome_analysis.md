@@ -31,6 +31,7 @@ Gblocks <filename.fasta> -t=d -b5=n -p=y
 
 For more than one file (download here an place in the same folder the sequences to align), save it as .sh file. 
 ```ruby
+#sometimes there is a problem with .sh formats, you could use 'dos2unix' function... install with sudo apt-get install dos2unix
 dos2unix gblocks.sh
 #run the file
 sh gblocks.sh
@@ -38,7 +39,6 @@ sh gblocks.sh
 The loop is described in the following lines:
 ```ruby
 for i in *.fasta; do Gblocks $i -t=d; done
-#sometimes there is a problem with .sh formats, you could use 'dos2unix' function... install with sudo apt-get install dos2unix
 ```
 
 The output will be two extra file per .fasta, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
