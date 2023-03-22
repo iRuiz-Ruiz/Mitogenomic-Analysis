@@ -13,7 +13,9 @@ done
 # Gblocks
 ## Installation
 Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
+
 Downoad Gblocks for Windows https://github.com/dongzhang0725/PhyloSuite_plugins
+
 Documentation https://home.cc.umanitoba.ca/~psgendb/doc/Castresana/Gblocks_documentation.html
 
 If you work in a WSL, you could move the compressed file to your programmes folder (or home directory). Then run this
@@ -27,16 +29,23 @@ tar xvf Gblocks_OS_0.91b.tar
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
-For more than one file (download here an place in the same folder the sequences to align), save it as .sh file
+For more than one file (download here an place in the same folder the sequences to align), save it as .sh file. 
 ```ruby
 for i in *.fasta; do Gblocks $i -t=d; done
+#sometimes there is a problem with .sh formats, you could use 'dos2unix' function... install with sudo apt-get install dos2unix
+dos2unix gblocks.sh
+#run the file
+sh gblocks.sh
 ```
-Then you could organize it in folder (Optional)
+You will get two extra file per .fasta, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
 ```ruby
 mkdir fasta-gb hmt
 mv *fasta-gb fasta-gb/
 mv *htm htm/
 ```
+The .htm file gives you information about the alignment size, the blocks and other details. The former will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section).
+
+The fasta-gb need to be converted to .fasta file to concatenate in the next step. 
 ## Format output file for PF2
 ### Concatenate .fasta files
 Input:
@@ -113,7 +122,7 @@ If appears 3.10.x or 3.x, that's probably the default python version in your sys
 ## Run Partition Finder 2
 Input files: 
 1. Phylip alignment file (see Gblocks - Output)
-2. the *.cfg* file (to write one see .cfg file example)
+2. the *.cfg* file (to write one see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section
 3. PartitionFinder.py (included in the zippe file - see [Installation of PF2](https://github.com/iRuiz-Ruiz/Notebook/edit/main/README.md#installation-of-pf2))
 
 To run PF2, the .phy and .cfg files need to be in the same folder (wherever you like, as long you know the path). **Don't move the file _PartitionFinder.py_ from its folder.**
@@ -144,7 +153,7 @@ INFO     | 2023-03-20 19:41:53,553 | Program path is here /home/w/partitionfinde
 ERROR    | 2023-03-20 19:41:53,553 | No such folder: ''
 ERROR    | 2023-03-20 19:41:53,553 | Failed to run. See previous errors.
 ```
-#Solution 1: create the .cfg file (see [.cfg file]() section) and save it in a separate folder with the .phy file.
+#Solution 1: create the .cfg file (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section) and save it in a separate folder with the .phy file.
 
 *#Problem 2: Does not find the .phy file*
 ```ruby
