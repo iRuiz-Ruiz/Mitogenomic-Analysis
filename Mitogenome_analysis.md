@@ -2,9 +2,41 @@
 # Alignment
 ## Mafft
 
+Loop to run mafft in computer (download here an place in the same folder the sequences to align), save it as .sh file
+```ruby
+for i in *.fasta
+do
+    mafft --quiet $i > ${i%.fasta}.aligned.fasta
+done
+```
+
 # Gblocks
 ## Installation
+Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
+Downoad Gblocks for Windows https://github.com/dongzhang0725/PhyloSuite_plugins
+Documentation https://home.cc.umanitoba.ca/~psgendb/doc/Castresana/Gblocks_documentation.html
+
+If you work in a WSL, you could move the compressed file to your programmes folder (or home directory). Then run this
+```ruby
+uncompress Gblocks_OS_0.91b.tar.Z
+tar xvf Gblocks_OS_0.91b.tar
+```
+
 ## Run Gblocks
+```ruby
+Gblocks <filename.fasta> -t=d -b5=n -p=y 
+```
+
+For more than one file (download here an place in the same folder the sequences to align), save it as .sh file
+```ruby
+for i in *.fasta; do Gblocks $i -t=d; done
+```
+Then you could organize it in folder (Optional)
+```ruby
+mkdir fasta-gb hmt
+mv *fasta-gb fasta-gb/
+mv *htm htm/
+```
 ## Format output file for PF2
 ### Concatenate .fasta files
 Input:
