@@ -25,10 +25,11 @@ tar xvf Gblocks_OS_0.91b.tar
 ```
 
 ## Run Gblocks
-Input files needed are
+Input files are
 1. Gblock executable program
 2. Aligned fasta files
-Both need to be in the same folder, to do that you could use the followin lines
+
+Both should be in the same folder, to do that you could use the following lines
 
 ```ruby
 #Create a folder to include the aligned files and Gblock executable program 
