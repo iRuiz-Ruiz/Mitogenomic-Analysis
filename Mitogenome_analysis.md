@@ -29,16 +29,12 @@ tar xvf Gblocks_OS_0.91b.tar
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
-For more than one file (download here an place in the same folder the sequences to align), save it as .sh file. 
+For more than one file, you could this simple loop (see [gblocks.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/gblock.sh))
 ```ruby
 #sometimes there is a problem with .sh formats, you could use 'dos2unix' function... install with sudo apt-get install dos2unix
 dos2unix gblocks.sh
 #run the file
 sh gblocks.sh
-```
-The loop is described in the following lines:
-```ruby
-for i in *.fasta; do Gblocks $i -t=d; done
 ```
 
 The output will be two extra file per .fasta, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
@@ -47,34 +43,17 @@ mkdir fasta-gb hmtl
 mv *fasta-gb fasta-gb/
 mv *htm html/
 ```
-The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the .fasta-gb files need to be converted to .fasta file to concatenate in the next step. You could use the [fastagb2fasta.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/fasta-gb2fasta.sh) make sure to have it in the same folder as the .fasta-gb files). 
+The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). 
+
+On the other hand, the .fasta-gb files need to be converted to .fasta file to concatenate in the next step. You could use the [fastagb2fasta.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/fasta-gb2fasta.sh) make sure to have it in the same folder as the .fasta-gb files). 
 ```ruby
+cd fasta-gb #go to the folder with the fasta-gb files and the .sh file
 dos2unix fastagb2fasta.sh
 sh fasta.sh 
 ```
-The loop is described in the following lines
-```ruby
-#------------ from fasta-gb to fasta 
-#delete enter in all the file
-cd fasta-gb #go to the folder with the fasta-gb files
-#loop starts
-for i in *.fasta-gb
-do
-#delete enter in all the file
-tr -d "\r\n" < $i > dummy
-tr -d " " < dummy > dummy2
-#includes an "enter" per specie
-sed -i -E "s/>/\n>/g" dummy2
-#delete first empty row
-awk 'NR>1' dummy2 > dummy
-#add enter to ID, only accept eight characters 
-sed -e "s/>.\{8\}/&\n/g" < dummy > ${i-gb}.fasta
-rm dummy dummy2
-done
-#loop ends
-```
 
-Comment: 
+**Comment: **
+Gblocks results differs in Linux or Terminal. 
 
 ## Format output file for PF2
 ### Concatenate .fasta files
