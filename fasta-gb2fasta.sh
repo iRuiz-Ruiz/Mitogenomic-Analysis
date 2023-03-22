@@ -1,3 +1,4 @@
+#------------ from fasta-gb to fasta 
 for i in *.fasta-gb
 do
 #delete enter in all the file
