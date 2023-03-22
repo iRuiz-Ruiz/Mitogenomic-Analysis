@@ -47,7 +47,7 @@ mkdir fasta-gb hmtl
 mv *fasta-gb fasta-gb/
 mv *htm html/
 ```
-The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the .fasta-gb files need to be converted to .fasta file to concatenate in the next step. You could use this shape file (make sure to have it in the same folder as the .fasta-gb files). 
+The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). On the other hand, the .fasta-gb files need to be converted to .fasta file to concatenate in the next step. You could use the [fastagb2fasta.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/fasta-gb2fasta.sh) make sure to have it in the same folder as the .fasta-gb files). 
 ```ruby
 dos2unix fastagb2fasta.sh
 sh fasta.sh 
@@ -98,7 +98,7 @@ sed -i -E "s/>/\n>/g" dummy
 #delete first empty row
 awk 'NR>1' dummy > dummy2
 #add enter to ID, only accept eight characters 
-sed -e "s/>.\{8\}/&\n/g" < dummy2 > ${i%-gb}.fasta
+sed -e "s/>.\{8\}/&\n/g" < dummy2 > ${i-cc}.fasta
 rm dummy dummy2
 done;
 ```
