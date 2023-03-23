@@ -43,7 +43,7 @@ cd /yourpath/gblock-tests
 ```
 **RUN GBLOCKS**
 ```ruby
-#Don't forget to copy the .fasta files to your folder before executing
+#Don't forget to copy the .fasta files to your folder before executing (you could include more parameters, see Gblocks Documentation)
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
