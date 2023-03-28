@@ -9,7 +9,11 @@ do
     mafft --quiet $i > ${i%.fasta}.aligned.fasta
 done
 ```
+## Alignment with TranslatorX
+Only for coding sequences
+[Code in pearl]
 
+Then you should run and cut. 
 # Gblocks
 ## Installation
 Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
