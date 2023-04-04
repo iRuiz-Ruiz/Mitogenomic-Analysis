@@ -158,7 +158,27 @@ wget https://github.com/brettc/partitionfinder/archive/v2.1.1.tar.gz
 #Decompress file
 tar xfz v2.1.1.tar.gz
 ```
-**Possible errors (and solutions)**
+Exactly, you only need to decompress it. 
+
+## Run Partition Finder 2
+Input files: 
+1. Phylip alignment file (see Gblocks - Output)
+2. the *.cfg* file (to write one see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section
+3. PartitionFinder.py (included in the zippe file - see [Installation of PF2](https://github.com/iRuiz-Ruiz/Notebook/edit/main/README.md#installation-of-pf2))
+
+To run PF2, 
+1. the .phy and .cfg files need to be in the same and separate folder from all files you are working on (wherever you like, as long you know the path).
+2. You should be on the partitionfinder-2.1.1 folder, where script would call the other programs. 
+
+```ruby
+python PartitionFinder.py /usr/yourpath/output.phy
+```
+
+The parameters of the analysis need to be defined in the .cfg file (what includes? see this [section](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file)) that the program would call during the analysis. 
+
+Now, the interesting part comes... how to interpret the data according to the models (yes, there are more than one parameter you should set for your analysis)? Take a look to [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial.
+
+**Possible errors (and solutions) when you attempt to run it**
 
 No.  |                   Error                    |        Reason        |                                     Solution                        |
 :---:|                   :---:                    |         :---:        |                                       :---:                         |
@@ -171,26 +191,9 @@ python --version
 
 If appears 3.10.x or 3.x, that's probably the default python version in your system. Any environment you create will set up to the systems' python version, unless you specify that you want python2 or other version. To work with PartitionFinder should appear as 2.7.18 or 2.7.x version (see **Environment Setting**)
 
-## Run Partition Finder 2
-Input files: 
-1. Phylip alignment file (see Gblocks - Output)
-2. the *.cfg* file (to write one see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section
-3. PartitionFinder.py (included in the zippe file - see [Installation of PF2](https://github.com/iRuiz-Ruiz/Notebook/edit/main/README.md#installation-of-pf2))
+**Possible errors (and solutions) after you manage to run it **
 
-To run PF2, the .phy and .cfg files need to be in the same folder (wherever you like, as long you know the path). **Don't move the file _PartitionFinder.py_ from its folder.**
-
-```ruby
-python /usr/yourpath/partitionfinder-2.1.1/PartitionFinder.py /usr/yourpath/output.phy
-```
-
-The parameters of the analysis need to be defined in the .cfg file (what includes? see this [section](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file)) that the program would call during the analysis. 
-
-Now, the interesting part comes... how to interpret the data according to the models (yes, there are more than one parameter you should set for your analysis)? Take a look to [Rob Lanfear](http://www.robertlanfear.com/partitionfinder/tutorial/) tutorial.
-
-
-**Possible errors (and solutions)**
-
-*#Problem 1: Does not find the .cfg file*
+*#Problem 1: Does not find the .cfg file or calling the program from a different folder*
 
 ```ruby
 INFO     | 2023-03-20 19:41:53,459 | Note: NumExpr detected 20 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
@@ -205,7 +208,8 @@ INFO     | 2023-03-20 19:41:53,553 | Program path is here /home/w/partitionfinde
 ERROR    | 2023-03-20 19:41:53,553 | No such folder: ''
 ERROR    | 2023-03-20 19:41:53,553 | Failed to run. See previous errors.
 ```
-#Solution 1: create the .cfg file (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section) and save it in a separate folder with the .phy file.
+
+#Solution 1: create the .cfg file (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section) and save it in a separate folder with the .phy file. Make sure you are running from partitionfinder-2.1.1 folder, not from your file folder. 
 
 *#Problem 2: Does not find the .phy file*
 ```ruby
