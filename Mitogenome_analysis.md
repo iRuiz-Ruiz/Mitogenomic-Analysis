@@ -364,6 +364,19 @@ nc_015248 AGAATATATAAAAAATTATAT
 ```
 Solution #4: BINGAMMA is designed for protein alignments, for DNA use GTRCATX. Also commented in the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html), in the "Step 3: Getting started".
 
+Problem #5: permission denied
+```ruby
+(raxml) w@PC-i9:~/mitoanalysis/raxml$ ./raxmlHPC -m GTRGAMMA -p 12345 -s mito-cc.phy -n T21
+-bash: ./raxmlHPC: Permission denied
+```
+
+Solution #5: Change directory permission to "executable" with chmod
+```ruby
+(raxml) w@PC-i9:~/mitoanalysis/raxml$ chmod +x raxmlHPC
+(raxml) w@PC-i9:~/mitoanalysis/raxml$ chmod +x raxmlHPC-PTHREADS-SSE3
+(raxml) w@PC-i9:~/mitoanalysis/raxml$ chmod +x raxmlHPC-SSE3
+```
+
 ##### What is T1, T2, T3 ... Tn?
 Is a suffix not to overwrite the RAXMl results if run different experiments. 
 
@@ -396,7 +409,7 @@ Text files / fasta files editing in Terminal:
 - phoenixNAP. How to Use Sed to Find and Replace a String in a File - https://phoenixnap.com/kb/sed-replace
 
 For RAXMl:
-- 
 - Ask Ubuntu - gcc command not found https://askubuntu.com/questions/1095168/command-not-found-cc-make-error-127
 - Pissis (2012) - Running RAxML: https://groups.google.com/g/raxml/c/sxHJrhC-yvA
 - Kozlov answer (2018) - raxmlHPC ERROR: Bad base (A) at site 1 of sequence 1 https://groups.google.com/g/raxml/c/YW6Vt9F6mbU
+- Change executable permissions: https://www.pluralsight.com/blog/it-ops/linux-file-permissions
