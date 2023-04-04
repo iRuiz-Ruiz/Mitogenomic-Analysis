@@ -1,5 +1,6 @@
 # Download mitogenomes
 # Alignment
+Mitochondrial genomes have two types of sequences coding and non-coding sequences. 
 ## Mafft
 
 Loop to run mafft in computer (download here an place in the same folder the sequences to align), save it as .sh file
