@@ -10,8 +10,24 @@ do
 done
 ```
 ## Alignment with TranslatorX
-Only for coding sequences
-[Code in pearl]
+There is an online version of TranslatorX http://translatorx.co.uk/ where you could run your .fasta files. Also, there is a local version in pearl to run a lot of files at once. Just copy and save it in the folder where your fasta files are. Meaning of each parameter is included in the script (line 80). 
+
+```ruby
+#To run one file
+perl translatorx_vLocal.pl -i name_file.fasta -o output_name -p F -c 5 -t T
+```
+
+Loop version: [translatorx-loop.sh]()
+```ruby
+dos2unix translatorx-loop.sh
+sh translatorx-loop.sh
+```
+
+```ruby
+mkdir xalign
+mv *.nt_ali.fasta xalign/
+cd xalign/
+```
 
 Then you should run and cut. 
 # Gblocks
