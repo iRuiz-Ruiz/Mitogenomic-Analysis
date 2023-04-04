@@ -17,7 +17,7 @@ There is an online version of TranslatorX http://translatorx.co.uk/ where you co
 perl translatorx_vLocal.pl -i name_file.fasta -o output_name -p F -c 5 -t T
 ```
 
-Loop version: [translatorx-loop.sh]()
+Loop version: [translatorx-loop.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/translatorx-loop.sh)
 ```ruby
 dos2unix translatorx-loop.sh
 sh translatorx-loop.sh
