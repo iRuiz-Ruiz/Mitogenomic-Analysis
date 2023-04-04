@@ -16,20 +16,20 @@ There is an online version of TranslatorX http://translatorx.co.uk/ where you co
 #To run one file
 perl translatorx_vLocal.pl -i name_file.fasta -o output_name -p F -c 5 -t T
 ```
-
 Loop version: [translatorx-loop.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/translatorx-loop.sh)
 ```ruby
 dos2unix translatorx-loop.sh
 sh translatorx-loop.sh
 ```
+Then, extract files of your interest, in this case the nucleotide fasta alignment. 
 
 ```ruby
 mkdir xalign
 mv *.nt_ali.fasta xalign/
 cd xalign/
 ```
+Then you should cut the flanks and continue with Gblocks step. 
 
-Then you should run and cut. 
 # Gblocks
 ## Installation
 Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
