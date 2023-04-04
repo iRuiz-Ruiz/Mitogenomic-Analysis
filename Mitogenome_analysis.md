@@ -293,6 +293,16 @@ Exelis Lab RAXMl: https://cme.h-its.org/exelixis/web/software/raxml/
 
 Download the infomation from the GitHub repository (https://github.com/stamatak/standard-RAxML). Go to Code > Download ZIP file and follow the instruction follow the instructions from the [RAxML hands-on session](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) in the step. (Yes! you will need to run all from the Terminal). If you consider neccesary, you could create a RAXMl environemnt, not to disturb python2 of "py2" environment or any other. 
 
+###Run RAXML
+You could follow this [tutorial](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html). You will need (in the same folder)
+1. Alignment file in .phylip format
+2. Partition squeme from PF2 in simple .txt file
+3. The executble file raxmlHPC (see [tutorial](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) to generate)
+
+```ruby
+./raxmlHPC -m GTRGAMMA -p 12345 -q texto.txt -s mito-cc.phy -n T21
+```
+
 **Possible errors (and solutions)**
 
 _Problem #1.a_
