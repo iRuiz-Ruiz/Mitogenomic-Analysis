@@ -88,7 +88,7 @@ On the other hand, the .fasta-gb files need to be converted to .fasta file to co
 ```ruby
 cd fasta-gb #go to the folder with the fasta-gb files and the .sh file
 dos2unix fastagb2fasta.sh
-sh fasta.sh 
+sh fastagb2fasta.sh 
 ```
 
 **Comment: **
