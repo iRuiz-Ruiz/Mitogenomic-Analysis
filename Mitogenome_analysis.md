@@ -1,4 +1,5 @@
 # Download mitogenomes
+Recommendation: your genes names should be no more than 8 characters (without considering ">")
 # Alignment
 Mitochondrial genomes have two types of sequences coding and non-coding sequences. 
 ## Mafft
@@ -107,18 +108,15 @@ conda install -c bioconda seqkit
 #concatenate in one file
 seqkit concat *.fasta > output.fasta
 #------------ format into a single line fasta 
-for i in *.fasta;
-do;
 #delete enter in all the file
-tr -d "\n" < $i > dummy
+tr -d "\n" < output.fasta > dummy
 #includes an "enter" per specie
 sed -i -E "s/>/\n>/g" dummy
 #delete first empty row
 awk 'NR>1' dummy > dummy2
-#add enter to ID, only accept eight characters 
-sed -e "s/>.\{8\}/&\n/g" < dummy2 > ${i-cc}.fasta
+#add enter to ID, only considers the first eight characters 
+sed -e "s/>.\{8\}/&\n/g" < dummy2 > output-cc.fasta
 rm dummy dummy2
-done;
 ```
 **Other options**
 - Geneious Prime (only works with a subscription 😞) https://assets.geneious.com/manual/2022.1/static/GeneiousManualsu61.html#:~:text=To%20join%20several%20sequences%20end,document%20from%20the%20input%20sequences.
