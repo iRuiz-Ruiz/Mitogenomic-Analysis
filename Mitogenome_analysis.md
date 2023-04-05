@@ -1,7 +1,8 @@
 # Download mitogenomes
 Recommendation: your genes names should be no more than 8 characters (without considering ">")
 # Alignment
-Mitochondrial genomes have two types of sequences coding and non-coding sequences. 
+Mitochondrial genomes have non-coding (e.g. rRNA or tRNA) and coding sequences (e.g. COI, Cytb, NAD1, etc). You should use TranslatorX and MAFFT to perform alignments, respectively. 
+
 ## Mafft
 
 Loop to run mafft in computer (download here an place in the same folder the sequences to align), save it as .sh file
@@ -12,7 +13,7 @@ do
 done
 ```
 ## Alignment with TranslatorX
-There is an online version of TranslatorX http://translatorx.co.uk/ where you could run your .fasta files. Also, there is a local version in pearl to run a lot of files at once. Just copy and save it in the folder where your fasta files are. Meaning of each parameter is included in the script (line 80). 
+Particularly for coding sequence. There is an online version of TranslatorX http://translatorx.co.uk/ where you could run your .fasta files. Also, there is a local version in pearl to run a lot of files at once. Copy and save it in the folder where your fasta files are. Meaning of each parameter is explained in the script (line 80). 
 
 ```ruby
 #To run one file
