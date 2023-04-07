@@ -310,6 +310,12 @@ Example 2:
 ./raxmlHPC -f a -m GTRGAMMA -p 12345 -q partition.txt -x 12345 -# 100 -s alignment_file.phy -n T1
 ```
 
+##### What is T1, T2, T3 ... Tn?
+Is a suffix not to overwrite the RAXMl results if run different experiments. 
+
+##### How to include the partitions from the PF2?
+1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. according to "Step 6: Partitioned Analysis" and continue with the analysis. 
+
 **Possible errors (and solutions)**
 
 _Problem #1.a_
@@ -394,14 +400,12 @@ Solution #5: Change directory permission to "executable" with chmod
 (raxml) w@PC-i9:~/mitoanalysis/raxml$ chmod +x raxmlHPC-SSE3
 ```
 
-##### What is T1, T2, T3 ... Tn?
-Is a suffix not to overwrite the RAXMl results if run different experiments. 
-
-##### How to include the partitions?
-1. Save the partitions obtained for RAXMl from the previous PF2 analysis in a simple text file (e.g. partitions.txt). You will include (1) the .phy file and (2) the .txt partition file in the command line. according to "Step 6: Partitioned Analysis" and continue with the analysis. 
-
 ### Visualize phylogeny
-Change names for fig-tree visualization
+FigTree is a good alternative to visualize the resulting phylogeny from the RAXMl. You could change label names in the phylogeny.
+
+```ruby
+sed -i 's/code1/long_name1/g' yourfilename.T1;
+```
 
 ## Bayesian Analysis - BEAST
 
