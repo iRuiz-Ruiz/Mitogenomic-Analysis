@@ -298,10 +298,14 @@ You could follow this [tutorial](https://cme.h-its.org/exelixis/web/software/rax
 2. Partition squeme from PF2 in simple .txt file
 3. The executble file raxmlHPC (see [tutorial](https://cme.h-its.org/exelixis/web/software/raxml/hands_on.html) to generate)
 
+Example 1:
 ```ruby
 #One bootstrap
 ./raxmlHPC -m GTRGAMMA -p 12345 -q partition.txt -s alignment_file.phy -n T21
+```
 
+Example 2:
+```ruby
 #Fast bootstraping
 ./raxmlHPC -f a -m GTRGAMMA -p 12345 -q partition.txt -x 12345 -# 100 -s alignment_file.phy -n T1
 ```
