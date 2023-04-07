@@ -401,7 +401,7 @@ Solution #5: Change directory permission to "executable" with chmod
 ```
 
 ### Visualize phylogeny
-FigTree is a good alternative to visualize the resulting phylogeny from the RAXMl. You could change label names in the phylogeny.
+FigTree http://tree.bio.ed.ac.uk/software/figtree/ is a good alternative to visualize the resulting phylogeny from the RAXMl. You could change label names in the phylogeny.
 
 ```ruby
 sed -i 's/code1/long_name1/g' yourfilename.T1;
