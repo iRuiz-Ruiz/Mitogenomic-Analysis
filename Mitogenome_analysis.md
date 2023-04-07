@@ -81,8 +81,8 @@ sh gblocks.sh
 The GBLOCKs output will be two extra files per .fasta files, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
 ```ruby
 mkdir fasta-gb hmtl
-mv *fasta-gb fasta-gb/
-mv *htm html/
+mv *.fasta-gb fasta-gb/
+mv *.htm html/
 ```
 The .htm file gives you information about the alignment size, the blocks and other details. This file will be useful to construct the .cfg file for PF2 (see [.cfg file](https://github.com/iRuiz-Ruiz/Notebook/edit/main/Mitogenome_analysis.md#how-to-write-a-cfg-file) section). 
 
@@ -422,3 +422,10 @@ For RAXMl:
 - Pissis (2012) - Running RAxML: https://groups.google.com/g/raxml/c/sxHJrhC-yvA
 - Kozlov answer (2018) - raxmlHPC ERROR: Bad base (A) at site 1 of sequence 1 https://groups.google.com/g/raxml/c/YW6Vt9F6mbU
 - Change executable permissions: https://www.pluralsight.com/blog/it-ops/linux-file-permissions
+
+Extra
+Rename file names
+```ruby
+rename 's/(\w+).+/$1.fasta/' *.fasta
+```
+- How to batch-rename long file names into short ones under Linux? https://superuser.com/questions/712071/how-to-batch-rename-long-file-names-into-short-ones-under-linux
