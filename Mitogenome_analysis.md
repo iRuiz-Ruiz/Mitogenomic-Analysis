@@ -303,7 +303,7 @@ You could follow this [tutorial](https://cme.h-its.org/exelixis/web/software/rax
 ./raxmlHPC -m GTRGAMMA -p 12345 -q partition.txt -s alignment_file.phy -n T21
 
 #Fast bootstraping
-./raxmlHPC -f a -m GTRGAMMA -p 1235 -q partition.txt -x 12345 -# 100 -s alignment_file.phy -n T1
+./raxmlHPC -f a -m GTRGAMMA -p 12345 -q partition.txt -x 12345 -# 100 -s alignment_file.phy -n T1
 ```
 
 **Possible errors (and solutions)**
