@@ -170,7 +170,7 @@ awk 'NR>1' dummy > dummy2
 sed -e "s/>.\{8\}/&\n/g" < dummy2 > output-cc.fasta
 rm dummy dummy2
 ```
-**Other options**
+**Other options (not recommended)**
 - Geneious Prime (only works with a subscription 😞) https://assets.geneious.com/manual/2022.1/static/GeneiousManualsu61.html#:~:text=To%20join%20several%20sequences%20end,document%20from%20the%20input%20sequences.
 - SEDA v1.5 (could not install due to a malware problem 😵) https://www.sing-group.org/seda/manual/operations.html#concatenate-sequences
 - ConcatFasta.py (need a list of your files) https://github.com/santiagosnchez/ConcatFasta/tree/5decfa76eefb2ff73a2ac8ca690503cb05f00c29
