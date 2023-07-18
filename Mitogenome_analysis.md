@@ -5,7 +5,7 @@ For example, any sequence downloaded from GenBank look like this (without the " 
 
 >'>JX311919.1 Cottus sp. MKY-2013 isolate Bird Creek cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
 
-You should reduce it to 8 characters (without the " ' ").
+You should reduce it to 8 characters (without the " ' "), making sure each one has a different name.
 
 >'>Cottus_1
 
