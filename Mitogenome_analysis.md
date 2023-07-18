@@ -9,7 +9,7 @@ You should reduce it to 8 characters (without the " ' ").
 
 >'>Cottus_1
 
-Note: You could change gene name size according to your needs, but make sure to update the code to #------------ format into a single line fasta (see below).
+Note: Further, you could change gene name identifier size according to your needs, but make sure to update the code to #------------ format into a single line fasta (see below).
 
 # Alignment
 Mitochondrial genomes have non-coding (e.g. rRNA or tRNA) and coding sequences (e.g. COI, Cytb, NAD1, etc). You should use TranslatorX and MAFFT to perform alignments, respectively. To make it clearer:
