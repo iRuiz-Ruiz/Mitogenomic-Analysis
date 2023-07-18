@@ -1,5 +1,5 @@
 # Download mitogenomes
-**IMPORTANT**: your genes names in the fasta file should be 8 characters (without considering ">")
+**IMPORTANT**: the names on your genes in the fasta file should be 8 characters (without considering ">")
 
 For example, any sequence downloaded from GenBank look like this (without the " ' ").
 
