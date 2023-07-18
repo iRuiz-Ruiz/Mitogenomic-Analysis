@@ -1,7 +1,20 @@
 # Download mitogenomes
-Recommendation: your genes names should be no more than 8 characters (without considering ">")
+**IMPORTANT**: your genes names in the fasta file should be 8 characters (without considering ">")
+
+For example, any sequence downloaded from GenBank look like this (without the " ' ").
+
+>'>JX311919.1 Cottus sp. MKY-2013 isolate Bird Creek cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
+
+You should reduce it to 8 characters (without the " ' ").
+
+>'>Cottus_1
+
+Note: You could change gene name size according to your needs, but make sure to update the code to #------------ format into a single line fasta (see below).
+
 # Alignment
-Mitochondrial genomes have non-coding (e.g. rRNA or tRNA) and coding sequences (e.g. COI, Cytb, NAD1, etc). You should use TranslatorX and MAFFT to perform alignments, respectively. 
+Mitochondrial genomes have non-coding (e.g. rRNA or tRNA) and coding sequences (e.g. COI, Cytb, NAD1, etc). You should use TranslatorX and MAFFT to perform alignments, respectively. To make it clearer:
+* MAFFT for non-coding sequences
+* TranslatorX for coding sequences
 
 ## Mafft
 
@@ -13,7 +26,7 @@ do
 done
 ```
 ## Alignment with TranslatorX
-Particularly for coding sequence. There is an online version of TranslatorX http://translatorx.co.uk/ where you could run your .fasta files. Also, there is a local version in pearl to run a lot of files at once. Copy and save it in the folder where your fasta files are. Meaning of each parameter is explained in the script (line 80). 
+Particularly for coding sequences. There is an online version of TranslatorX http://translatorx.co.uk/ where you could run your .fasta files. Also, there is a local version in pearl to run a lot of files at once. Copy and save it in the folder where your fasta files are. Meaning of each parameter is explained in the script (line 80). 
 
 ```ruby
 #To run one file
@@ -33,6 +46,52 @@ cd xalign/
 ```
 Then you should cut the flanks and continue with Gblocks step. 
 
+But, wait a second! How to cut the flanks?
+
+## Aligned .fasta sequences preparation
+Sometimes after exporting sequences, they are not in one row 
+### Flank cutting 
+You could cut the flanks with Clustal or MEGA softwares and save it in .fasta format.
+
+Important: Some researches consider the flanks (both extremes of the alignment before a sequence block appears) are informative. However, if most of the sequences doesn't have the same lenghts, when the alignment is processed in further analysis it would compare an extreme of the sequence to "nothing". So, to avoid that, it's preferred to shorten the alignment and focus the analysis where 50% to 75% of the sequences start sharing information, non-considering the gaps within the alignment.  
+
+### Make sure the sequences are in one row
+Sometimes exported .fasta files look like this (without the extra space between the lines and the " " ")
+
+>">sequence_1
+<br/>AYOUR.DNA.OR.PROTEIN..SEQUENCEAAA<br><br/>AAASDAAAAAAAAAAAAAAAA...........AAAA<br><br/>TGTGTATGTATGCCCCCCCCC.......THEAAEND<br>
+
+>">sequence_2
+<br/>AYOUR.DNA.OR.PROTEIN..SEQUENCEAAA<br><br/>AAASDAAAAAAAAAAAAAAAA...........AAAA<br><br/>TGTGTATGTATGCCCCCCCCC.......THEAAEND<br>
+
+But, some programs only accept .fasta files with sequences in one row that look like this.
+>">sequence_1
+AAYOURAAADNAAAORPROTEINAASEQUENCEAAAAAASDAAAAAAAAAAAAAAAA...........AAAATGTGTATGTATGCCCCCCCCC.......THEAAEND
+>">sequence_2
+AAYOURAAADNAAAORPROTEINAASEQUENCEAAAAAASDAAAAAAAAAAAAAAAA...........AAAATGTGTATGTATGCCCCCCCCC.......THEAAEND
+
+To do that, you could run this bash code 
+```ruby
+#------------ format into a single line fasta 
+#delete enter in all the file
+tr -d "\n" < your_sequence.fasta > dummy
+#includes an "enter" per specie
+sed -i -E "s/>/\n>/g" dummy
+#delete first empty row
+awk 'NR>1' dummy > dummy2
+#add enter to ID, only considers the first eight characters, but you could consider a longer name changing the "8" (e.g. 10) 
+sed -e "s/>.\{8\}/&\n/g" < dummy2 > output-cc.fasta
+rm dummy dummy2
+```
+
+If you have a lot of .fasta sequences, you could use this loop (download [one_row_fasta.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/one_row_fasta.sh))
+```ruby
+#sometimes there is a problem with .sh format, you could use 'dos2unix' function to solve it... install with sudo apt-get install dos2unix
+dos2unix one_row_fasta.sh
+#run the file
+sh gblocks.sh
+```
+
 # Gblocks
 ## Installation
 Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
@@ -50,7 +109,7 @@ tar xvf Gblocks_OS_0.91b.tar
 ## Run Gblocks
 Input files are
 1. Gblock executable program
-2. Aligned fasta files
+2. Aligned (one row per each sequence) fasta files 
 
 Both should be in the same folder, to do that you could use the following lines
 
@@ -70,7 +129,7 @@ cd /yourpath/gblock-tests
 Gblocks <filename.fasta> -t=d -b5=n -p=y 
 ```
 
-For more than one file, you could this simple loop (see [gblocks.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/gblock.sh))
+For more than one file, you could use this simple loop (download [gblocks.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/gblock.sh))
 ```ruby
 #sometimes there is a problem with .sh format, you could use 'dos2unix' function to solve it... install with sudo apt-get install dos2unix
 dos2unix gblocks.sh
@@ -115,7 +174,7 @@ tr -d "\n" < output.fasta > dummy
 sed -i -E "s/>/\n>/g" dummy
 #delete first empty row
 awk 'NR>1' dummy > dummy2
-#add enter to ID, only considers the first eight characters 
+#add enter to ID, only considers the first eight characters, but you could consider a longer name changing the 8 
 sed -e "s/>.\{8\}/&\n/g" < dummy2 > output-cc.fasta
 rm dummy dummy2
 ```
