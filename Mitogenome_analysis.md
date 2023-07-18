@@ -48,7 +48,7 @@ Then you should cut the flanks and continue with Gblocks step.
 
 But, wait a second! How to cut the flanks?
 
-## Aligned .fasta sequences preparation
+## Aligned .fasta files preparation for Gblocks
 Sometimes after exporting sequences, they are not in one row 
 ### Flank cutting 
 You could cut the flanks with Clustal or MEGA softwares and save it in .fasta format.
