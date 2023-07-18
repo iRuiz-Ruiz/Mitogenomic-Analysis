@@ -84,14 +84,6 @@ sed -e "s/>.\{8\}/&\n/g" < dummy2 > output-cc.fasta
 rm dummy dummy2
 ```
 
-If you have a lot of .fasta sequences, you could use this loop (download [one_row_fasta.sh](https://github.com/iRuiz-Ruiz/Notebook/blob/main/one_row_fasta.sh))
-```ruby
-#sometimes there is a problem with .sh format, you could use 'dos2unix' function to solve it... install with sudo apt-get install dos2unix
-dos2unix one_row_fasta.sh
-#run the file
-sh gblocks.sh
-```
-
 # Gblocks
 ## Installation
 Download Gblocks for MAC or Linux https://slackbuilds.org/repository/15.0/academic/Gblocks/
