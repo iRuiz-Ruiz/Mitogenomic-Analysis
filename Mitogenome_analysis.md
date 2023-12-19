@@ -131,7 +131,7 @@ sh gblocks.sh
 
 The GBLOCKs output will be two extra files per .fasta files, (1) .fasta-gb and (2) .html. Then you could organize it in folders (Optional).
 ```ruby
-mkdir fasta-gb hmtl
+mkdir fasta-gb html
 mv *.fasta-gb fasta-gb/
 mv *.htm html/
 ```
