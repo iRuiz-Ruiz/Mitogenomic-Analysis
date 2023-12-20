@@ -311,13 +311,13 @@ Then you could open it with excel, and give the desired format with "sum" and "c
 
 _(Version to run in the terminal - coming soon!!!)_
 
-If you explore the examples (included in the partitionfinder folder), you may see that the DATA BLOCK section could be written as well like this, 
+If you explore the examples (included in the `partitionfinder` folder), you may see that the DATA BLOCK section could be written as well like this, 
 ```ruby
 Gene1_pos1 = 1-789\3;
 Gene1_pos2 = 2-789\3;
 Gene1_pos3 = 3-789\3;
 ```
-In the example .cfg there i don't have the exact codon positions, as I pass it through GBLOCKs and selected the most conserved regions. 
+Contrastingly, in the example .cfg (above), I don't have the exact codon positions, because I pass it through GBLOCKs and selected the most conserved regions. 
 Do you know any other reason why? Please leave it in the comments. 
 
 Output: Partitions for your alignment
