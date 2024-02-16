@@ -1,5 +1,3 @@
-# Notebook
-Codes
-Collaborative place where i summarize codes, errors, tutorials through my journey as bioinformatist (applied to biodiversity). I have another repositories if that of your interest. 
+# Mitogenomic_Analysis
 
-Contact: maria.ruiz.r@upch.pe
+Collaborative space to summarize codes, errors, tutorials for mitogenomic analysis.
